@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "99ae31de-9ad8-46a1-b4ce-ee907627db50",
+		"name": "Entity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GETEntity",
+			"item": [
+				{
+					"name": "GET Valid Entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "10580533-ec37-46c4-8223-fe1536defcbc",
+								"exec": [
+									"/*\r",
+									"\r",
+									"To get List of Entities\r",
+									"\r",
+									"1. To verify status code is 200\r",
+									"2. Verify the repsonse time is less than 200ms\r",
+									"3. Verify the response id > 0\r",
+									"4. Verify the response id is correct\r",
+									"5. Verify the Entity Name is correct\r",
+									"6. Verify the formation Date is correct\r",
+									"7. Verify the Entity Type Id is correct\r",
+									"\r",
+									"*/\r",
+									"\r",
+									"var data = JSON.parse(responseBody);\r",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Response time is less than 200ms\"] = responseTime < 200; \r",
+									"tests[\"Response id value equal  to 30\"] = data.id===30;\r",
+									"tests[\"Response Id greater than zero\"] = data.id>\"0\"; \r",
+									"tests[\"Response name is correct\"] = data.name===\"Miguel Test15\"; \r",
+									"tests[\"Response formation date\"] = data.formationDate===\"2019-12-12T00:00:00\"; \r",
+									"tests[\"Response Entity Type id\"] = data.EntityTypeId===1001; "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "https://ct-engageskelapp-api-entity.azurewebsites.net/api/v1/entities/30"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Invalid Entity Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "10580533-ec37-46c4-8223-fe1536defcbc",
+								"exec": [
+									"/*\r",
+									"\r",
+									"To get List of Entities\r",
+									"\r",
+									"1. To verify status code is 400\r",
+									"2. Verify the repsonse time is less than 200ms\r",
+									"3. Verify the Response message is correct\r",
+									"4. Verify the response code is correct\r",
+									"\r",
+									"*/\r",
+									"\r",
+									"var data = JSON.parse(responseBody);\r",
+									"tests[\"Status code is 200\"] = responseCode.code === 400;\r",
+									"tests[\"Response time is less than 200ms\"] = responseTime < 2000;\r",
+									"tests[\"Response message is coorect\"] = data.message===\"Invalid Parameter: id\";\r",
+									"tests[\"Response code is coorect\"] = data.code===\"LWEM-4001\";"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "https://ct-engageskelapp-api-entity.azurewebsites.net/api/v1/entities/300"
+					},
+					"response": []
+				},
+				{
+					"name": "GET All Entities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09422cc3-642a-4d05-bbc3-84cb2128a5cd",
+								"exec": [
+									"/*\r",
+									"\r",
+									"To get List of Entities\r",
+									"\r",
+									"1. To verify status code is 200\r",
+									"2. Verify the repsonse time is less than 200ms\r",
+									"\r",
+									"*/\r",
+									"\r",
+									"var data = JSON.parse(responseBody);\r",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Response time is less than 200ms\"] = responseTime < 2000;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "https://ct-engageskelapp-api-entity.azurewebsites.net/api/v1/entities"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
